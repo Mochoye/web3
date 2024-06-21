@@ -84,26 +84,25 @@ export const TransactionProvider = ({ children }) => {
                     {
                         to: addressTo,
                         from: currentAccount,
-                        value: parsedAmount._hex,
-                        data: transactionContract.populateTransaction.sendTransaction(addressTo, keyword, message).data,
-                        gas : 0x5208, // 21000
+                        gas : '0x5208', // 21000
+                        value: parsedAmount._hex
                     }
                 ]
             });
 
-            const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message, keyword );
+            // const transactionHash = await transactionContract.addToBlockchain(addressTo, parsedAmount, message, keyword );
 
 
-            setIsLoading(true);
-            console.log(`Loading - ${transactionHash.hash}`);
-            await transactionHash.wait();
+            // setIsLoading(true);
+            // console.log(`Loading - ${transactionHash.hash}`);
+            // await transactionHash.wait();
 
-            setIsLoading(false);
-            console.log(`Success - ${transactionHash.hash}`);
+            // setIsLoading(false);
+            // console.log(`Success - ${transactionHash.hash}`);
 
-            const transactionCount = await transactionContract.getTransactionCount();
+            // const transactionCount = await transactionContract.getTransactionCount();
 
-            setTransactionCount(transactionCount.toNumber());
+            // setTransactionCount(transactionCount.toNumber());
         }   
         catch(error) {
             console.log(error);
